@@ -1,5 +1,9 @@
 @props(['value'])
-
-<label {{ $attributes->merge(['class' => 'block font-medium text-sm text-gray-700']) }}>
+<label class="form-label">
     {{ $value ?? $slot }}
+    @if($value === 'Password' && Route::has('password.request'))
+      <span class="form-label-description">
+        <a href="{{ route('password.request') }}">{{ __('Forgot your password?') }}</a>
+      </span>
+    @endif
 </label>
